@@ -25,21 +25,6 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
-// const verifyJWT = (req, res, next) => {
-//   const authHeader = req.headers.authorization;
-//   console.log(authHeader);
-//   if (!authHeader) {
-//     res.status(401)({ message: "unauthorized access" });
-//   }
-//   const token = authHeader.split(" ")[1];
-//   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
-//     if (err) {
-//       res.status(401)({ message: "unauthorized access" });
-//     }
-//     req.decoded = decoded;
-//     next();
-//   });
-// };
 
 function verifyJWT(req, res, next) {
   const authHeader = req.headers.authorization;
@@ -148,6 +133,9 @@ app.post("/jwt", (req, res) => {
 
 app.get("/", (req, res) => {
   res.send("genius car server is running");
+});
+app.get("/mata", (req, res) => {
+  res.send({ message: "gfksadgfsd" });
 });
 
 app.listen(port, () => {
